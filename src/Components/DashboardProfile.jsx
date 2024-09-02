@@ -113,7 +113,7 @@ console.log(currentuser)
     try {
       dispatch(updateStart());
       const response = await fetch(
-        `http://localhost:5000/api/user/update/${currentuser.rest._id}`,
+        `https://blog-backend-3hx4.onrender.com/api/user/update/${currentuser.rest._id}`,
         {
           method: "PUT",
           headers: {
@@ -146,7 +146,7 @@ console.log(currentuser)
     setShowModal(false);
     try {
       const response = await fetch(
-        `http://localhost:5000/api/user/delete/${currentuser.rest._id}`,
+        `https://blog-backend-3hx4.onrender.com/api/user/delete/${currentuser.rest._id}`,
         {
           method: "DELETE",
           headers: {

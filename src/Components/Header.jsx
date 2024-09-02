@@ -1,4 +1,11 @@
-import { Avatar, Button, Dropdown, DropdownDivider, Navbar, TextInput } from "flowbite-react";
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownDivider,
+  Navbar,
+  TextInput,
+} from "flowbite-react";
 import React from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
@@ -7,20 +14,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toggleTheme } from "../Redux/Slice/ThemeSlice";
 import { signoutSuccess } from "../Redux/Slice/UserSlice";
 
-
 const Header = () => {
   const path = useLocation().pathname;
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
-const {currentuser}=useSelector((state)=>state.user)
-const {theme} = useSelector((state)=>state.theme)
-//console.log(currentuser)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentuser } = useSelector((state) => state.user);
+  const { theme } = useSelector((state) => state.theme);
+  //console.log(currentuser)
 
-const handleSignout=()=>{
-  dispatch(signoutSuccess())
-  localStorage.removeItem('Token')
-  navigate('/signin')
-}
+  const handleSignout = () => {
+    dispatch(signoutSuccess());
+    localStorage.removeItem("Token");
+    navigate("/signin");
+  };
 
   return (
     <Navbar className="border-b-4 dark:bg-black">
@@ -53,33 +59,39 @@ const handleSignout=()=>{
         <Button
           className="w-12 h-10 sm:inline "
           gradientDuoTone="greenToBlue"
-         
           pill
-         onClick={()=>dispatch(toggleTheme())}
+          onClick={() => dispatch(toggleTheme())}
         >
-         {theme==="light"?(<FaMoon/>):(<FaSun />)}
+          {theme === "light" ? <FaMoon /> : <FaSun />}
         </Button>
 
-{
-  currentuser ?(
-    <Dropdown arrowIcon={false} inline label={<Avatar alt='user' img={currentuser.rest.profilePicture} rounded/>}>
-<Dropdown.Header>
-  <span className="block text-sm">{currentuser.rest.username}</span>
-</Dropdown.Header>
-<Link to={"/dashboard?tab=profile"}>
-<Dropdown.Item>Profile</Dropdown.Item>
-</Link>
-<DropdownDivider />
-<Dropdown.Item onClick={handleSignout}>Sign Out</Dropdown.Item>
-    </Dropdown>
-  ):(
-<Link to="/signin">
-  <Button gradientDuoTone="greenToBlue">SignIn</Button>
-</Link>
-  )
-}
+        {currentuser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar
+                alt="user"
+                img={currentuser.rest.profilePicture}
+                rounded
+              />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">{currentuser.rest.username}</span>
+            </Dropdown.Header>
+            <Link to={"/dashboard?tab=profile"}>
+              <Dropdown.Item>Profile</Dropdown.Item>
+            </Link>
+            <DropdownDivider />
+            <Dropdown.Item onClick={handleSignout}>Sign Out</Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link to="/signin">
+            <Button gradientDuoTone="greenToBlue">SignIn</Button>
+          </Link>
+        )}
 
-  
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>

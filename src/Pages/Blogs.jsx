@@ -18,7 +18,7 @@ const Blogs = () => {
   }, [deletepost]);
 
   const fetchData = async () => {
-    const response = await fetch("http://localhost:5000/api/post/getposts");
+    const response = await fetch("https://blog-backend-3hx4.onrender.com/api/post/getposts");
     const data = await response.json();
     setBlogs(data);
     //console.log(data);
@@ -28,7 +28,7 @@ const Blogs = () => {
     setShowModal(false);
 
     const response = await fetch(
-      `http://localhost:5000/api/post/deletepost/${deletepost}/${currentuser.rest._id}`,
+      `https://blog-backend-3hx4.onrender.com/api/post/deletepost/${deletepost}/${currentuser.rest._id}`,
       {
         method: "DELETE",
         headers: {

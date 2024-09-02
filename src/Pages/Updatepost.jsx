@@ -30,7 +30,7 @@ const Updatepost = () => {
     try {
       const fetchPost = async () => {
         const res = await fetch(
-          `http://localhost:5000/api/post/getposts?postId=${postId}`
+          `https://blog-backend-3hx4.onrender.com/api/post/getposts?postId=${postId}`
         );
         const data = await res.json();
         if (!res.ok) {
@@ -94,7 +94,7 @@ const Updatepost = () => {
     e.preventDefault();
     try {
       const res = await fetch(
-        `http://localhost:5000/api/post/updatepost/${formData[0]._id}/${currentuser.rest._id}`,
+        `https://blog-backend-3hx4.onrender.com/api/post/updatepost/${formData[0]._id}/${currentuser.rest._id}`,
         {
           method: "PUT",
           headers: {
