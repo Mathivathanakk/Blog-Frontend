@@ -11,26 +11,26 @@ import Dashboard from "./Pages/Dashboard";
 import PrivateRoute from "./Components/PrivateRoute";
 import OnlyAdminPrivateRoute from "./Components/OnlyAdminPrivateRoute";
 import CreatePost from "./Pages/CreatePost";
+import Updatepost from "./Pages/Updatepost";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Header />
+        <Header />
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/about" element={<About />}/>
-          <Route path="/blogs" element={<Blogs />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blogs" element={<Blogs />} />
           <Route element={<PrivateRoute />}>
-          <Route path='/dashboard'element={<Dashboard />}/>
-
+            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
           <Route element={<OnlyAdminPrivateRoute />}>
-          <Route path='/Create-post'element={<CreatePost />}/>
-
+            <Route path="/Create-post" element={<CreatePost />} />
+            <Route path="/update-post/:postId" element={<Updatepost />} />
           </Route>
-          <Route path='/signup' element={<SignUp />}/>
-          <Route path="/signin" element={<SignIn />}/>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
         </Routes>
         <FooterCom />
       </BrowserRouter>
